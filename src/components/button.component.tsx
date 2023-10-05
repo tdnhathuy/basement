@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleProp, StyleSheet, TextStyle } from 'react-native';
 import { View } from './view.component';
 import { Text } from './text.component';
 import { ViewBaseProps } from '../types';
@@ -9,12 +9,14 @@ export type ButtonType = 'primary' | 'secondary' | 'outline' | 'warn';
 
 export interface ButtonProps extends ViewBaseProps {
   title?: string;
+  titleSize?: number;
+  titleStyle?: StyleProp<TextStyle>;
+
   disabled?: boolean;
   rounded?: boolean;
   onPress?: () => void;
   type?: ButtonType;
   testID?: string;
-  titleSize?: number;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -29,6 +31,7 @@ export const Button = (props: ButtonProps) => {
     type = 'primary',
     titleSize = 16,
     show = true,
+    titleStyle,
   } = props;
 
   const styles = StyleSheet.create({
@@ -76,7 +79,7 @@ export const Button = (props: ButtonProps) => {
     ...(isWarn && styles.warnButtonStyle),
   };
 
-  const titleStyle = {
+  const defaultTitleStyle = {
     ...styles.defaultTitleStyle,
     ...(isOutline && styles.outlineTitleStyle),
     ...(isSecondary && styles.secondaryTitleStyle),
@@ -91,7 +94,7 @@ export const Button = (props: ButtonProps) => {
       show={show}>
       <Text
         color={isOutline ? Colors.black : Colors.white}
-        style={[titleStyle]}>
+        style={[defaultTitleStyle, titleStyle]}>
         {title}
       </Text>
     </View>
