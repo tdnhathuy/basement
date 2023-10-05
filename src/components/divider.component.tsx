@@ -1,6 +1,6 @@
-import {Colors, WIDTH} from '@app/configs';
 import React from 'react';
-import {View} from './view.component';
+import { View } from './view.component';
+import { Colors, WIDTH } from '../configs/style.config';
 
 export interface DividerProps {
   color?: string;
@@ -19,7 +19,7 @@ export const Divider = (props: DividerProps) => {
 
   return (
     <View w={width} self="center" py={spacing}>
-      <View style={{borderTopWidth: thickness, backgroundColor: color}} />
+      <View style={{ borderTopWidth: thickness, backgroundColor: color }} />
     </View>
   );
 };
