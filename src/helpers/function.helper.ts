@@ -1,9 +1,7 @@
-import { PayloadCheckRole, zustandUser } from '@app/zustands/user.zustand';
 import { faker } from '@faker-js/faker';
 import { range } from 'lodash';
 import moment, { Moment } from 'moment';
 import { Insets, Platform } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 export const isIOS = Platform.OS === 'ios';
 
@@ -45,34 +43,7 @@ export const createHitSlop = (number = 5): Insets => ({
 });
 
 export function isIphoneWithNotch() {
-  const deviceId = DeviceInfo.getDeviceId();
-  const iPhonesWithNotch = [
-    'iPhone10,3',
-    'iPhone11,2',
-    'iPhone11,4',
-    'iPhone11,6',
-    'iPhone11,8',
-    'iPhone12,1',
-    'iPhone12,3',
-    'iPhone12,5',
-    'iPhone12,8',
-    'iPhone13,1',
-    'iPhone13,2',
-    'iPhone13,3',
-    'iPhone13,4',
-    'iPhone14,2',
-    'iPhone14,3',
-    'iPhone14,4',
-    'iPhone14,5',
-    'iPhone14,6',
-    'iPhone14,7',
-    'iPhone14,8',
-    'iPhone15,2',
-    'iPhone15,3',
-  ];
-
-  const isIphoneWithNotch = iPhonesWithNotch.includes(deviceId);
-  return isIphoneWithNotch;
+  return true;
 }
 
 export const removeUnicode = (str: string) => {
@@ -99,6 +70,3 @@ export function getDaysOfWeek(w: number, y: number) {
   const arr = range(0, 7).map(x => moment(date).add(x, 'day'));
   return arr;
 }
-
-export const checkRole = (payload: PayloadCheckRole) =>
-  zustandUser.getState().checkRole(payload);
