@@ -3,12 +3,12 @@ import {
   StyleProp,
   StyleSheet,
   Text as RNText,
-  TextProps,
+  TextProps as RNTextProps,
   TextStyle,
 } from 'react-native';
 import { baseTextStyle } from '../helpers';
 import { EnumTextSize, TextBaseProps } from '../types';
-export interface ITextProps extends TextProps, TextBaseProps {
+export interface TextProps extends RNTextProps, TextBaseProps {
   color?: string;
   children?: any;
   center?: boolean;
@@ -27,7 +27,7 @@ export enum CustomFont {
   'black' = 'Nunito-Black',
 }
 
-export const Text = (props: ITextProps) => {
+export const Text = (props: TextProps) => {
   const {
     children = '',
     size = 'md',
