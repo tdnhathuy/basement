@@ -9,15 +9,14 @@
     "start": "react-native start",
     "test": "jest"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@faker-js/faker": "^8.1.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "react": "18.2.0",
     "react-native": "0.71.0",
-    "react-native-keyboard-aware-scroll-view": "^0.9.5"
-  },
-  "devDependencies": {
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.14.0",
     "@babel/runtime": "^7.12.5",
