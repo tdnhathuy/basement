@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TextInput as RNTextInput,
   ViewStyle,
-  TextInputProps,
+  TextInputProps as RNTextInputProps,
 } from 'react-native';
 import { View } from './view.component';
 import { Text } from './text.component';
@@ -12,22 +12,22 @@ import { TextBaseProps, ViewBaseProps } from '../types';
 import { baseTextStyle, baseViewStyle, isIOS } from '../helpers';
 import { Colors } from '../configs/style.config';
 
-export interface UCATextInputType {
+export interface TextInputType {
   getText: () => string;
   setText: (text: string) => void;
   clear: () => void;
 }
 
-export interface UCATextInputProps extends TextInputProps {
-  value?: TextInputProps['value'];
-  onChangeText?: TextInputProps['onChangeText'];
+export interface TextInputProps extends RNTextInputProps {
+  value?: RNTextInputProps['value'];
+  onChangeText?: RNTextInputProps['onChangeText'];
   placeholder?: string;
   ctnStyle?: StyleProp<ViewStyle>;
   ctnProps?: ViewBaseProps;
   inputProps?: TextBaseProps;
 }
 
-export const TextInput = forwardRef<UCATextInputType, UCATextInputProps>(
+export const TextInput = forwardRef<TextInputType, TextInputProps>(
   (props, ref) => {
     const {
       ctnStyle = {},

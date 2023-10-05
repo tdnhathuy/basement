@@ -4,7 +4,7 @@ import {
   StyleProp,
   StyleSheet,
   TouchableOpacity,
-  ViewProps,
+  ViewProps as RNViewProps,
   ViewStyle,
 } from 'react-native';
 import { ViewBaseProps } from '../types';
@@ -12,7 +12,7 @@ import { Colors } from '../configs/style.config';
 import { useStyle } from '../hooks/common.hook';
 import { baseViewStyle } from '../helpers';
 
-export interface UCAViewProps extends ViewProps, ViewBaseProps {
+export interface ViewProps extends RNViewProps, ViewBaseProps {
   style: StyleProp<ViewStyle>;
   spacing?: number;
   onPress?: () => void;
@@ -23,7 +23,7 @@ export interface UCAViewProps extends ViewProps, ViewBaseProps {
   getHeight?: (height: number) => void;
 }
 
-export const View = (props: Partial<UCAViewProps>) => {
+export const View = (props: Partial<ViewProps>) => {
   const {
     spacing = 0,
     row = false,

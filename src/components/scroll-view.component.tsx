@@ -1,18 +1,18 @@
 import React from 'react';
 import {
   ScrollView as RNScrollView,
-  ScrollViewProps,
+  ScrollViewProps as RNScrollViewProps,
   StyleSheet,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { baseViewStyle } from '../helpers';
 import { ViewBaseProps } from '../types';
 
-export interface UCAScrollViewProps extends ScrollViewProps, ViewBaseProps {
+export interface IScrollViewProps extends RNScrollViewProps, ViewBaseProps {
   handleKeyboard?: boolean;
 }
 
-export const ScrollView = (props: UCAScrollViewProps) => {
+export const ScrollView = (props: IScrollViewProps) => {
   const { handleKeyboard = true } = props;
   const { defaultViewStyle, contentContainerStyle } = StyleSheet.create({
     defaultViewStyle: {

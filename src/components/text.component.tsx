@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { baseTextStyle } from '../helpers';
 import { EnumTextSize, TextBaseProps } from '../types';
-export interface UCATextProps extends TextProps, TextBaseProps {
+export interface ITextProps extends TextProps, TextBaseProps {
   color?: string;
   children?: any;
   center?: boolean;
@@ -27,7 +27,7 @@ export enum CustomFont {
   'black' = 'Nunito-Black',
 }
 
-export const Text = (props: UCATextProps) => {
+export const Text = (props: ITextProps) => {
   const {
     children = '',
     size = 'md',
