@@ -1,8 +1,6 @@
-//Components
 import * as Components from './components';
-
-//Helper
-export {
+import { useStyle } from './hooks';
+import {
   isIOS,
   formatDate,
   formatNumber,
@@ -13,7 +11,15 @@ export {
   parseArrToOptions,
 } from './helpers';
 
-//Hooks
-export { useStyle } from './hooks';
-
-export { Components };
+export {
+  Components,
+  useStyle,
+  formatDate,
+  formatNumber,
+  genId,
+  genShadow,
+  isIphoneWithNotch,
+  removeUnicode,
+  parseArrToOptions,
+  isIOS,
+};
