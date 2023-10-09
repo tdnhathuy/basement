@@ -14,6 +14,7 @@ export interface SegmentProps {
   segments: string[];
   onChangeTab?: (index: number) => void;
   ctnStyle?: StyleProp<ViewStyle>;
+  initIndex?: number;
 }
 
 const SEGMENT_HEIGHT = 45;
@@ -21,16 +22,21 @@ const SEGMENT_RADIUS = 6;
 const SEGMENT_OFFSET = 6;
 
 export const Segment = (props: SegmentProps) => {
-  const { segments = [], ctnStyle, onChangeTab = () => {} } = props;
+  const {
+    segments = [],
+    ctnStyle,
+    onChangeTab = () => {},
+    initIndex = 0,
+  } = props;
 
-  const [index, setIndex] = useState(0);
-  const [tabWidth, setTabWidth] = useState(0);
+  const [index, setIndex] = useState(initIndex);
+  const [tabWidth, setTabWidth] = useState(initIndex);
 
-  const refAniValue = useRef(new Animated.Value(0)).current;
+  const refAniValue = useRef(new Animated.Value(initIndex)).current;
 
   const onPressTab = (idx: number) => {
     setIndex(idx);
-    onChangeTab(idx)
+    onChangeTab(idx);
   };
 
   useDidUpdate(() => {
