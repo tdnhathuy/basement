@@ -62,6 +62,7 @@ export const Segment = (props: SegmentProps) => {
       {segments.map((segment, idx) => {
         return (
           <TouchableOpacity
+            key={idx}
             onLayout={e => {
               setTabWidth(e.nativeEvent.layout.width - SEGMENT_OFFSET * 2);
             }}
