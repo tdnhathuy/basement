@@ -21,7 +21,7 @@ const SEGMENT_RADIUS = 6;
 const SEGMENT_OFFSET = 6;
 
 export const Segment = (props: SegmentProps) => {
-  const { segments = [], ctnStyle } = props;
+  const { segments = [], ctnStyle, onChangeTab = () => {} } = props;
 
   const [index, setIndex] = useState(0);
   const [tabWidth, setTabWidth] = useState(0);
@@ -30,6 +30,7 @@ export const Segment = (props: SegmentProps) => {
 
   const onPressTab = (idx: number) => {
     setIndex(idx);
+    onChangeTab(idx)
   };
 
   useDidUpdate(() => {
