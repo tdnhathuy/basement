@@ -49,6 +49,7 @@ export const Button = (props: ButtonProps) => {
       color: '#FFF',
       fontWeight: '500',
       fontSize: titleSize,
+      textAlign: 'center',
     },
 
     outlineButtonStyle: {
