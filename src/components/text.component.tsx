@@ -51,7 +51,10 @@ export const Text = (props: TextProps) => {
   });
 
   return (
-    <RNText onPress={props.onPress} style={[defaultTextStyle, style]}>
+    <RNText
+      onPress={props.onPress}
+      style={[defaultTextStyle, style]}
+      {...props}>
       {children}
     </RNText>
   );
