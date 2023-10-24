@@ -53,11 +53,13 @@ export const Button = (props: ButtonProps) => {
     },
 
     outlineButtonStyle: {
-      backgroundColor: '#f1f1f1',
+      borderWidth: 1,
+      backgroundColor: '#FFF',
+      borderColor: '#267C47',
     },
     outlineTitleStyle: {
-      backgroundColor: '#f1f1f1',
-      color: Colors.black,
+      color: Colors.heneiken_green,
+      backgroundColor: '#FFF',
     },
 
     secondaryButtonStyle: {},
