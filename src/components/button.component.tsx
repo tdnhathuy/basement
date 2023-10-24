@@ -17,6 +17,9 @@ export interface ButtonProps extends ViewBaseProps {
   onPress?: () => void;
   type?: ButtonType;
   testID?: string;
+
+  rightIcon?: JSX.Element;
+  leftIcon?: JSX.Element;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -32,6 +35,8 @@ export const Button = (props: ButtonProps) => {
     titleSize = 16,
     show = true,
     titleStyle,
+    rightIcon,
+    leftIcon,
   } = props;
 
   const styles = StyleSheet.create({
@@ -44,6 +49,8 @@ export const Button = (props: ButtonProps) => {
       height: height,
       width: width,
       paddingHorizontal: 24,
+      flexDirection: 'row',
+      columnGap: 8,
     },
     defaultTitleStyle: {
       color: '#FFF',
@@ -95,11 +102,13 @@ export const Button = (props: ButtonProps) => {
       style={[ctnStyle]}
       {...(!disabled && { onPress })}
       show={show}>
+      {leftIcon}
       <Text
         color={isOutline ? Colors.black : Colors.white}
         style={[defaultTitleStyle, titleStyle]}>
         {title}
       </Text>
+      {rightIcon}
     </View>
   );
 };
