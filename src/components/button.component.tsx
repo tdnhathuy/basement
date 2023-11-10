@@ -4,6 +4,7 @@ import { View } from './view.component';
 import { Text } from './text.component';
 import { ViewBaseProps } from '../types';
 import { Colors } from '../configs/style.config';
+import { useDebounce } from 'rooks';
 
 export type ButtonType = 'primary' | 'secondary' | 'outline' | 'warn';
 
@@ -20,6 +21,7 @@ export interface ButtonProps extends ViewBaseProps {
 
   rightIcon?: JSX.Element;
   leftIcon?: JSX.Element;
+  debounce?: number;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -96,11 +98,13 @@ export const Button = (props: ButtonProps) => {
     ...(isWarn && styles.warnTitleStyle),
   };
 
+  const debouncePress = useDebounce(() => onPress?.(), 0);
+
   return (
     <View
       testID={props.testID}
       style={[ctnStyle]}
-      {...(!disabled && { onPress })}
+      {...(!disabled && { onPress: debouncePress })}
       show={show}>
       {leftIcon}
       <Text
