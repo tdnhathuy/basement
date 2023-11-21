@@ -6,7 +6,12 @@ import { ViewBaseProps } from '../types';
 import { Colors } from '../configs/style.config';
 import { useDebounce } from 'rooks';
 
-export type ButtonType = 'primary' | 'secondary' | 'outline' | 'warn';
+export type ButtonType =
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'warn'
+  | 'disable';
 
 export interface ButtonProps extends ViewBaseProps {
   title?: string;
@@ -78,17 +83,26 @@ export const Button = (props: ButtonProps) => {
       backgroundColor: '#A02026',
     },
     warnTitleStyle: {},
+
+    disabledButtonStyle: {
+      backgroundColor: '#D5D5D5',
+    },
+    disabledTitleStyle: {
+      color: '#9E9E9E',
+    },
   });
 
   const isOutline = type === 'outline';
   const isSecondary = type === 'secondary';
   const isWarn = type === 'warn';
+  const isDisable = type === 'disable' || disabled;
 
   const ctnStyle = {
     ...styles.defaultButtonStyle,
     ...(isOutline && styles.outlineButtonStyle),
     ...(isSecondary && styles.secondaryButtonStyle),
     ...(isWarn && styles.warnButtonStyle),
+    ...(isDisable && styles.disabledButtonStyle),
   };
 
   const defaultTitleStyle = {
@@ -96,6 +110,7 @@ export const Button = (props: ButtonProps) => {
     ...(isOutline && styles.outlineTitleStyle),
     ...(isSecondary && styles.secondaryTitleStyle),
     ...(isWarn && styles.warnTitleStyle),
+    ...(isDisable && styles.disabledTitleStyle),
   };
 
   const debouncePress = useDebounce(() => onPress?.(), 0);
@@ -104,7 +119,7 @@ export const Button = (props: ButtonProps) => {
     <View
       testID={props.testID}
       style={[ctnStyle]}
-      {...(!disabled && { onPress: debouncePress })}
+      {...(!isDisable && { onPress: debouncePress })}
       show={show}>
       {leftIcon}
       <Text
