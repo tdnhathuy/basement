@@ -38,12 +38,17 @@ export const Text = (props: TextProps) => {
 
   const fontSize = typeof size === 'number' ? size : EnumTextSize[size];
 
-  const fontWeight =
-    font === 'bold' ? '700' : font === 'semi-bold' ? '500' : '400';
+  const fontFamily =
+    font === 'bold'
+      ? 'Roboto-Bold'
+      : font === 'semi-bold'
+      ? 'Roboto-Medium'
+      : 'Roboto-Regular';
+
   const { defaultTextStyle } = StyleSheet.create({
     defaultTextStyle: {
       fontSize: fontSize,
-      fontWeight,
+      fontFamily,
       textAlign: props.align,
       textDecorationLine: underline ? 'underline' : 'none',
       ...baseTextStyle(props),
