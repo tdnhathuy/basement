@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleProp, StyleSheet, TextStyle } from 'react-native';
-import { View } from './view.component';
+import { StyleProp, StyleSheet, TextStyle, ViewProps } from 'react-native';
 import { Text } from './text.component';
 import { ViewBaseProps } from '../types';
 import { Colors } from '../configs/style.config';
 import { useDebounce } from 'rooks';
+import { View } from 'basement/src/components/view.component';
 
 export type ButtonType =
   | 'primary'
@@ -27,6 +27,7 @@ export interface ButtonProps extends ViewBaseProps {
   rightIcon?: JSX.Element;
   leftIcon?: JSX.Element;
   debounce?: number;
+  ctnStyle?: ViewProps['style'];
 }
 
 export const Button = (props: ButtonProps) => {
@@ -44,6 +45,7 @@ export const Button = (props: ButtonProps) => {
     titleStyle,
     rightIcon,
     leftIcon,
+    ctnStyle: btnStyle,
   } = props;
 
   const styles = StyleSheet.create({
@@ -118,7 +120,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <View
       testID={props.testID}
-      style={[ctnStyle]}
+      style={[ctnStyle, btnStyle]}
       {...(!isDisable && { onPress: debouncePress })}
       show={show}>
       {leftIcon}
