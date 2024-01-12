@@ -34,27 +34,11 @@ export const View = (props: Partial<ViewProps>) => {
     bottomContainer = false,
     show = true,
     getHeight,
+    hiddenOverflow = false,
   } = props;
 
   const { safeBottom } = useStyle();
   const [paddingBottom, setPaddingBottom] = useState(safeBottom);
-
-  // useDidUpdate(() => {
-  //   setPaddingBottom(safeBottom);
-  // }, [safeBottom]);
-
-  useEffect(() => {
-    // const kbShow = Keyboard.addListener('keyboardWillShow', () => {
-    //   setPaddingBottom(20);
-    // });
-    // const kbHide = Keyboard.addListener('keyboardWillHide', () => {
-    //   setPaddingBottom(0);
-    // });
-    // return () => {
-    //   kbShow.remove();
-    //   kbHide.remove();
-    // };
-  }, []);
 
   const { defaultViewStyle } = StyleSheet.create({
     defaultViewStyle: {
@@ -69,6 +53,7 @@ export const View = (props: Partial<ViewProps>) => {
       columnGap: row ? spacing : 0,
 
       display: show ? 'flex' : 'none',
+      overflow: hiddenOverflow ? 'hidden' : 'visible',
 
       ...(bottomContainer
         ? {

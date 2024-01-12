@@ -36,6 +36,7 @@ export interface ViewBaseProps {
   absolute?: boolean;
 
   show?: boolean;
+  hiddenOverflow?: boolean;
 }
 
 export interface TextBaseProps {
