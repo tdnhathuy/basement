@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleProp, StyleSheet, TextStyle, ViewProps } from 'react-native';
-import { Text } from './text.component';
-import { ViewBaseProps } from '../types';
-import { Colors } from '../configs/style.config';
 import { useDebounce } from 'rooks';
-import { View } from 'basement/src/components/view.component';
+import { Colors } from '../configs/style.config';
+import { ViewBaseProps } from '../types';
+import { Text } from './text.component';
+import { View } from './view.component';
 
 export type ButtonType =
   | 'primary'
@@ -28,6 +28,7 @@ export interface ButtonProps extends ViewBaseProps {
   leftIcon?: JSX.Element;
   debounce?: number;
   ctnStyle?: ViewProps['style'];
+  adjustsFontSizeToFit?: boolean;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -46,6 +47,7 @@ export const Button = (props: ButtonProps) => {
     rightIcon,
     leftIcon,
     ctnStyle: btnStyle,
+    adjustsFontSizeToFit = false,
   } = props;
 
   const styles = StyleSheet.create({
@@ -57,7 +59,7 @@ export const Button = (props: ButtonProps) => {
       flex: props.flex1 ? 1 : 0,
       height: height,
       width: width,
-      paddingHorizontal: 24,
+      paddingHorizontal: 8,
       flexDirection: 'row',
       columnGap: 8,
     },
@@ -126,7 +128,9 @@ export const Button = (props: ButtonProps) => {
       {leftIcon}
       <Text
         color={isOutline ? Colors.black : Colors.white}
-        style={[defaultTitleStyle, titleStyle]}>
+        style={[defaultTitleStyle, titleStyle]}
+        numberOfLines={1}
+        adjustsFontSizeToFit={adjustsFontSizeToFit}>
         {title}
       </Text>
       {rightIcon}
