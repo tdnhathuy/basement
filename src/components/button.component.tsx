@@ -64,7 +64,7 @@ export const Button = (props: ButtonProps) => {
       columnGap: 8,
     },
     defaultTitleStyle: {
-      color: '#FFF',
+      color: 'transparent',
       fontWeight: '500',
       fontSize: titleSize,
       textAlign: 'center',
@@ -77,7 +77,6 @@ export const Button = (props: ButtonProps) => {
     },
     outlineTitleStyle: {
       color: Colors.heneiken_green,
-      backgroundColor: '#FFF',
     },
 
     secondaryButtonStyle: {},
