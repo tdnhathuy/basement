@@ -57,6 +57,7 @@ export const Text = (props: TextProps) => {
 
   return (
     <RNText
+      allowFontScaling={false}
       onPress={props.onPress}
       style={[defaultTextStyle, style]}
       {...props}>
