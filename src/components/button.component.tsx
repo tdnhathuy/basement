@@ -64,7 +64,8 @@ export const Button = (props: ButtonProps) => {
       columnGap: 8,
     },
     defaultTitleStyle: {
-      color: 'transparent',
+      color: '#FFF',
+      backgroundColor: 'transparent',
       fontWeight: '500',
       fontSize: titleSize,
       textAlign: 'center',
